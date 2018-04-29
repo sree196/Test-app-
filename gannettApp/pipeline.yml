@@ -1,0 +1,31 @@
+resources:
+  - name: git-repo
+    type: git
+    source:
+      uri: https://github.com/sree196/Test-app-.git
+      branch: master
+  - name: time
+    type: time
+    source:
+      interval: 60s
+
+
+jobs:
+  - name: maven-install
+    plan:
+    - aggregate:
+      - get: git-repo
+        trigger: true
+      - get: time
+    - task: maven-install
+      privileged: true
+      file: git-repo/maven-pipeline.yml
+  
+  - name: test-container
+    plan: 
+    - aggregate: 
+      - get: git-repo
+        trigger: true
+    - task: test-container
+      privileged: true
+      file: git-repo/test-container.yml
