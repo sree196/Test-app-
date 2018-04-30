@@ -1,0 +1,19 @@
+file:
+  /opt/helloworld/hello:
+    exists: true
+    mode: "0755"
+    size: 6140803
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+process:
+  hello:
+    running: true
+http:
+  http://127.0.0.1:8080:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body: [] 
