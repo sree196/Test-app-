@@ -75,7 +75,7 @@ public class GannettTestApi {
 
         assertEquals("hello",helloc.getmessagehello("false","false").getBody());
     }
-    @Test
+    Test
     public void checkHello2() {
         HttpHeaders responseHeaders = new HttpHeaders();
 
